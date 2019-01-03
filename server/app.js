@@ -4,7 +4,7 @@ import cors from 'cors';
 import jsend from 'jsend';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import handleRoutes from './routes/helpers';
+import handleRoutesNotFound from './routes/notFound';
 import connectString from './config/config';
 
 dotenv.config();
@@ -17,7 +17,7 @@ mongoose
   .then(() => {
     console.log('Mongodb connected!');
   })
-  .catch(err =>  console.log(`error ${err.message}`));
+  .catch(err => console.log(`error ${err.message}`));
 
 const urlencoded = bodyParser.urlencoded({
   extended: false
@@ -36,7 +36,7 @@ app.use(jsend.middleware);
 
 
 // Use user routes
-app.use('/', handleRoutes);
+app.use(handleRoutesNotFound);
 
 app.listen(port, () => console.log(`server is running on port ${port}`));
 

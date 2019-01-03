@@ -2,6 +2,6 @@ import { config } from 'dotenv';
 
 config();
 
-module.exports =  {
+module.exports = {
   mongoURI: process.env.CONNECTDB
 };
